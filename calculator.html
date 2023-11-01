@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator Project</title>
+  <style>
+    body {
+      font-family: system-ui;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      width: 250px;
+      padding: 15px;
+      border: 1px solid rgb(190, 190, 190);
+      border-radius: 10px;
+      background-color: rgb(236, 236, 236);
+    }
+
+    .display {
+      padding: 10px;
+      height: 60px;
+      border: 1px solid rgb(196, 196, 196);
+      text-align: right;
+      padding-right: 15px;
+      font-size: 18px;
+      color: purple;
+      font-weight: 600;
+      display: grid;
+      background-color: rgba(238, 17, 238, 0.123);
+      overflow-x: auto;
+    }
+
+    .keys {
+      margin-top: 5px;
+      padding: 10px;
+      border: 1px solid rgb(196, 196, 196);
+      text-align: right;
+      padding-right: 15px;
+      font-size: 18px;
+      display: grid;
+      row-gap: 10px;
+      justify-content: center;
+      border-radius: 10px;
+      background-color: hsla(0, 0%, 63%, 0.116);
+    }
+
+    .row1,
+    .row2,
+    .row3,
+    .row4,
+    .row5 {
+      display: flex;
+      column-gap: 10px;
+    }
+
+    .keys input {
+      height: 45px;
+      width: 45px;
+      padding: 3px;
+      border-radius: 25px;
+      border: none;
+      background-color: rgb(255, 255, 255);
+      font-size: 16px;
+      color: rgb(0, 0, 0);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.671);
+    }
+
+    .keys input:hover {
+      background-color: rgba(179, 179, 179, 0.616);
+    }
+
+    .keys input:active {
+      background-color: rgba(236, 28, 243, 0.301);
+    }
+
+    .equal-sign input {
+      width: 95px;
+    }
+
+    .preview {
+      font-size: 13px;
+      text-align: left;
+    }
+    .results {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .about {
+      display: flex;
+      font-size: 14px;
+      font-weight: 600;
+      justify-content: space-between;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="about">
+      <div>Calculator Project</div>
+      <div>Than Aung Naing</div>
+    </div>
+    <div class="display">
+      <div class="user-input"></div>
+      <div class="results">
+        <div class="preview"></div>
+        <div class="result"></div>
+      </div>
+
+    </div>
+    <div class="keys">
+      <div class="row1">
+        <div>
+          <input type="button" value="AC" onclick="
+        input = 'AC';
+        document.querySelector('.user-input').innerHTML = '';
+        document.querySelector('.result').innerHTML = ``;
+        document.querySelector('.preview').innerHTML = ``;
+        totalInput = '';
+
+        localStorage.removeItem('userInput');
+        localStorage.removeItem('result');
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="C" onclick="
+        input = 'C';
+        console.log(input);
+        totalInput = totalInput.substr(0, totalInput.length - 1);
+        document.querySelector('.user-input').innerHTML = `${totalInput}`;
+
+        if (totalInput){
+          result = eval(totalInput);
+        }
+        else {
+          result = '';
+        }
+        document.querySelector('.preview').innerHTML = `${result}`;
+        ">
+        </div>
+        <div>
+          <input type="button" value="%" onclick="
+        input = '%';
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="/" onclick="
+        input = '/';
+        operator = input;
+        display(input);
+        console.log(input);
+        ">
+        </div>
+      </div>
+      <div class="row2">
+        <div>
+          <input type="button" value="7" onclick="
+        input = '7';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="8" onclick="
+        input = '8';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="9" onclick="
+        input = '9';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="*" onclick="
+        input = '*';
+        operator = input;
+        display(input);
+        console.log(input);
+        ">
+        </div>
+      </div>
+      <div class="row3">
+        <div>
+          <input type="button" value="4" onclick="
+        input = '4';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="5" onclick="
+        input = '5';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="6" onclick="
+        input = '6';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="-" onclick="
+        input = '-';
+        operator = input;
+        display(input);
+        console.log(input);
+        ">
+        </div>
+      </div>
+      <div class="row4">
+        <div>
+          <input type="button" value="1" onclick="
+        input = '1';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="2" onclick="
+        input = '2';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="3" onclick="
+        input = '3';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="+" onclick="
+        input = '+';
+        operator = input;
+        display(input);
+        console.log(input);
+        ">
+        </div>
+      </div>
+      <div class="row5">
+        <div>
+          <input type="button" value="0" onclick="
+        input = '0';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div>
+          <input type="button" value="." onclick="
+        input = '.';
+        display(input);
+        console.log(input);
+        ">
+        </div>
+        <div class="equal-sign">
+          <input type="button" value="=" onclick="
+        input = '=';
+        compute(totalInput);
+        console.log(`${totalInput} = ${result}`);
+        ">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let input = '';
+    let totalInput = localStorage.getItem('userInput') || '';
+    let result = localStorage.getItem('result') || '';
+
+    document.querySelector('.user-input').innerHTML = `${totalInput}`;
+    document.querySelector('.result').innerHTML = `${result}`;
+
+    function display(input) {
+      totalInput += input;
+      document.querySelector('.user-input').innerHTML = `${totalInput}`;
+      localStorage.setItem('userInput', `${totalInput}`);
+      localStorage.setItem('result', `${result}`);
+
+      result = eval(totalInput);
+      document.querySelector('.preview').innerHTML = `${result}`;
+    }
+
+    function compute(totalInput) {
+      if (totalInput){
+        result = eval(totalInput);
+      }
+      else {
+        result = '';
+      }
+      document.querySelector('.result').innerHTML = `${result}`;
+      localStorage.setItem('userInput', `${totalInput}`);
+      localStorage.setItem('result', `${result}`);
+      document.querySelector('.preview').innerHTML = ``;
+    }
+
+  </script>
+</body>
+
+</html>
