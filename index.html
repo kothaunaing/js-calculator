@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Calculator Project</title>
   <style>
     body {
@@ -61,7 +61,8 @@
       column-gap: 10px;
     }
 
-    .keys input {
+    .btn, 
+    .equal-btn {
       height: 45px;
       width: 45px;
       padding: 3px;
@@ -75,15 +76,17 @@
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.671);
     }
 
-    .keys input:hover {
+    .btn:hover,
+    .equal-btn:hover {
       background-color: rgba(179, 179, 179, 0.616);
     }
 
-    .keys input:active {
+    .btn:active,
+    .equal-btn:active {
       background-color: rgba(236, 28, 243, 0.301);
     }
 
-    .equal-sign input {
+    .equal-btn {
       width: 95px;
     }
 
@@ -124,11 +127,11 @@
     <div class="keys">
       <div class="row1">
         <div>
-          <input type="button" value="AC" onclick="
+          <input class="btn" type="button" value="AC" onclick="
         input = 'AC';
-        document.querySelector('.user-input').innerHTML = '';
-        document.querySelector('.result').innerHTML = ``;
-        document.querySelector('.preview').innerHTML = ``;
+        document.querySelector('.user-input').innerHTML = ' ';
+        document.querySelector('.result').innerHTML = ` `;
+        document.querySelector('.preview').innerHTML = ` `;
         totalInput = '';
 
         localStorage.removeItem('userInput');
@@ -137,11 +140,12 @@
         ">
         </div>
         <div>
-          <input type="button" value="C" onclick="
+          <input class="btn" type="button" value="C" onclick="
         input = 'C';
         console.log(input);
         totalInput = totalInput.substr(0, totalInput.length - 1);
         document.querySelector('.user-input').innerHTML = `${totalInput}`;
+        document.querySelector('.result').innerHTML = ` `;
 
         if (totalInput){
           result = eval(totalInput);
@@ -153,13 +157,13 @@
         ">
         </div>
         <div>
-          <input type="button" value="%" onclick="
+          <input class="btn" type="button" value="%" onclick="
         input = '%';
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="/" onclick="
+          <input class="btn" type="button" value="/" onclick="
         input = '/';
         operator = input;
         display(input);
@@ -169,28 +173,28 @@
       </div>
       <div class="row2">
         <div>
-          <input type="button" value="7" onclick="
+          <input class="btn" type="button" value="7" onclick="
         input = '7';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="8" onclick="
+          <input class="btn" type="button" value="8" onclick="
         input = '8';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="9" onclick="
+          <input class="btn" type="button" value="9" onclick="
         input = '9';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="*" onclick="
+          <input class="btn" type="button" value="*" onclick="
         input = '*';
         operator = input;
         display(input);
@@ -200,28 +204,28 @@
       </div>
       <div class="row3">
         <div>
-          <input type="button" value="4" onclick="
+          <input class="btn" type="button" value="4" onclick="
         input = '4';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="5" onclick="
+          <input class="btn" type="button" value="5" onclick="
         input = '5';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="6" onclick="
+          <input class="btn" type="button" value="6" onclick="
         input = '6';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="-" onclick="
+          <input class="btn" type="button" value="-" onclick="
         input = '-';
         operator = input;
         display(input);
@@ -231,28 +235,28 @@
       </div>
       <div class="row4">
         <div>
-          <input type="button" value="1" onclick="
+          <input class="btn" type="button" value="1" onclick="
         input = '1';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="2" onclick="
+          <input class="btn" type="button" value="2" onclick="
         input = '2';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="3" onclick="
+          <input class="btn" type="button" value="3" onclick="
         input = '3';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="+" onclick="
+          <input class="btn" type="button" value="+" onclick="
         input = '+';
         operator = input;
         display(input);
@@ -262,21 +266,21 @@
       </div>
       <div class="row5">
         <div>
-          <input type="button" value="0" onclick="
+          <input class="btn" type="button" value="0" onclick="
         input = '0';
         display(input);
         console.log(input);
         ">
         </div>
         <div>
-          <input type="button" value="." onclick="
+          <input class="btn" type="button" value="." onclick="
         input = '.';
         display(input);
         console.log(input);
         ">
         </div>
         <div class="equal-sign">
-          <input type="button" value="=" onclick="
+          <input class="equal-btn" type="button" value="=" onclick="
         input = '=';
         compute(totalInput);
         console.log(`${totalInput} = ${result}`);
@@ -309,7 +313,7 @@
         result = eval(totalInput);
       }
       else {
-        result = '';
+        result = ' ';
       }
       document.querySelector('.result').innerHTML = `${result}`;
       localStorage.setItem('userInput', `${totalInput}`);
